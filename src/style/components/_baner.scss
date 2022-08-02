@@ -1,0 +1,50 @@
+.baner{
+  &__show{
+    .slick-arrow{
+      display:none !important;
+    }
+  }
+
+  &__item{
+    position: relative;
+    img{
+      width: 100%;
+    }
+  }
+
+
+  &__content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%, -50%);
+    text-align:center;
+    display: inline-block;
+    height:auto;
+  }
+
+  &__body{
+    padding-bottom: 50px;
+    display:block;
+    
+  }
+
+  &__title{
+    font-size: 70px;
+    font-weight: 300;
+    line-height: 1.4;
+    @media (max-width:$tablet) {
+      font-size: 40px;
+    }
+  }
+
+  &__subTitle{
+    display: inline-block;
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    @media (max-width:$tablet) {
+      font-size:12px;
+    }
+  }
+}

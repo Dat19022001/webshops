@@ -1,0 +1,26 @@
+.breadcrumb{
+  padding:30px 0;
+
+  &__menu{
+    margin: 7px 0 0;
+    display:flex;
+
+    li{
+      text-transform: uppercase;
+      font-weight: 500;
+      color: #a8a7a4;
+      font-size: 12px;
+      a{
+        &::after{
+          content: "/";
+          color: #a8a7a4;
+          padding: 0 3px;
+        }
+      }
+      span{
+        color: #323c3f;
+        font-weight: 400;
+      }
+    }
+  }
+}

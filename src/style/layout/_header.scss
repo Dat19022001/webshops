@@ -1,0 +1,173 @@
+.header{
+  &__top{
+    background-color: $bg-header;
+    padding: 7px 0;
+    margin-bottom: 10px;
+  }
+
+  &__info{
+   ul{
+    display: flex;
+    justify-content: flex-end;
+   }
+   li:first-child{
+    a{
+      border-left: none;
+    }
+   }
+   a{
+    font-size: 13px;
+    color:$white;
+    display: inline-block;
+    padding: 0 10px;
+    border-left: 1px solid $color-border-header;
+   }
+  }
+
+  &__sub{
+    padding-top: 10px;
+  }
+
+  &__content{
+    display:flex;
+  }
+
+  &__hotline{
+    margin-top:5px;
+    a{
+      display:flex;
+      align-items:center;
+    }
+    img{
+      max-width: 35px;
+      margin-right: 10px;
+    }
+  }
+
+  &__logo{
+    text-align:center;
+    img{
+      max-width: 250px;
+    }
+  }
+
+  &__help{
+    ul{
+      display:flex;
+      justify-content: flex-end;
+    }
+    a{
+      img{
+        width:30px;
+      }
+    }
+  }
+
+  &__cart{
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__quantity{
+    border-radius: 2em;
+    color: $white;
+    font-size: 11px;
+    font-weight: 600;
+    height: 20px;
+    right: -15px;
+    line-height: 18px;
+    position: absolute;
+    text-align: center;
+    background-color: $bg-header;
+    top: -10px;
+    width: 20px;
+  }
+
+  &__search, &__account{
+    padding: 0 10px;
+    position: relative;
+  }
+
+  &__account{
+    &:hover ul {
+      opacity: 1;
+      visibility: inherit;
+      display: block;
+      &::before{
+        border: 9px solid transparent;
+        border-bottom: 9px solid $color-border-account;
+        margin-left: -9px;
+        bottom: 100%;
+        left: 125px;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+    }
+    ul{
+      position: absolute;
+      top: 40px;
+      min-width: 150px;
+      border: 1px solid $color-border-account;
+      background: $white;
+      margin: 0;
+      padding: 4px 12px;
+      border-radius: 0 0 3px 3px;
+      box-shadow: 0 6px 12px 0 rgb(0 0 0 / 18%);
+      z-index: 15;
+      opacity: 0;
+      display: block;
+      visibility: visible;
+      transition: all .4s ease-in-out;
+      left: -100px;
+    }
+    a{
+      color: text;
+      display: block;
+      text-align: left;
+      &:hover {
+        color: $bg-header;
+      }
+    }
+    svg{
+      width: 18px;
+      font-size: 11px;
+      margin-right: 5px;
+    }
+  }
+
+  &__search{
+    margin-left: 10px;
+  }
+
+  &__menu{
+    padding: 0 15px;
+    border-top: 1px solid $color-border-menu;
+    margin-top: 5px;
+    border-bottom: 2px solid $bg-header;
+    ul{
+      padding:6px 0;
+      text-align: center;
+      li{
+        display: inline-block;
+        margin-top: 2px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        a{
+          font-weight: 540;
+          padding: 12px 25px;
+          text-transform: uppercase;
+          position: relative;
+          font-size: 15px;
+          display: block;
+          &:hover{
+            color: $bg-header;
+          }
+        }
+
+      }
+    }
+  }
+}

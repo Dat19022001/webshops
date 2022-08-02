@@ -1,0 +1,21 @@
+.error{
+  text-align: center;
+  padding: 100px;
+  font-size: 22px;
+  font-style: italic;
+
+  &__title{
+    color: $color-text;
+    letter-spacing: .01em;
+    font-size: 55px;
+    line-height:55px;
+  }
+
+  span{
+    font-size: 14px;
+
+    a:hover{
+      color:$bg-header;
+    }
+  }
+}

@@ -1,0 +1,100 @@
+.login{
+  max-width: 100%;
+  width: 420px ;
+  padding: 10px 20px 1px 20px;
+  box-shadow: 0 2px 4pxrgba(0,0,0,.1);
+  margin: 50px auto;
+  background-image: linear-gradient($white,$color-bg-login);
+  
+
+  form{
+    margin-bottom: 30px;
+    ul{
+      margin-bottom: 20px;
+      li{
+        margin-bottom: 15px;
+
+        p{
+          color: $red;
+          font-size: 12px;
+          margin-top:5px;
+          padding-left: 10px;
+        }
+        input{
+          height: 40px ;
+          line-height: 40px ;
+          width: 100% ;
+          border-radius: 0;
+          border: 1px solid $color-border-login;
+          outline: none;
+          box-shadow: none;
+          padding:0 10px;
+          font-size: 15px;
+        }
+
+        input:focus {
+          box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+        }
+      }
+    }
+  }
+
+  &__submit{
+    text-align: center;
+    margin-bottom: 0 !important;
+  }
+
+  &__submit1{
+    height: 40px !important;
+    color: $white;
+    border-radius: 3px !important;
+    width: 33% !important;
+    text-transform: uppercase;
+    padding: 0 20px !important;
+    background: linear-gradient(to right,$color-buttom-login,$color-buttom-login2);
+  }
+
+  &__btn{
+    text-align: center;
+    svg{
+      width: 20px;
+    }
+  }
+  &__face{
+    background: linear-gradient(to right,$color-buttom-login3,$color-buttom-login2) !important;
+    color: $white;
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    width: 100px;
+    border-radius: 5px;
+  }
+
+  &__google{
+    color: $white;
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    width: 96px;
+    margin: 0 0 0 10px;
+    background: linear-gradient(to right,#fa5858,#b43104) !important;
+    border-radius: 5px;
+  }
+
+  &__forget{
+    width: 100%;
+    text-align: center;
+    padding: 10px 10px 0;
+    margin-bottom: 15px;
+    a{
+      text-decoration: underline;
+      font-weight: bold;
+      &:hover{
+        color:$bg-header;
+      }
+    }
+    svg{
+      font-size:15px;
+    }
+  }
+}
