@@ -99,13 +99,13 @@ export default function Header(){
                   </div>
                 </div>
               </li>
-              <li><Link to="/">Trang chủ</Link></li>
-              <li><Link to="/my_pham">Dược Mỹ Phẩm</Link></li>
-              <li><Link to="/trang_diem">Trang điểm</Link></li>
-              <li><Link to="/cham_soc">Chăm sóc</Link></li>
-              <li><Link to="/lam_dep">Làm đẹp</Link></li>
-              <li><Link to="/gioi_thieu">Giới thiệu</Link></li>
-              <li><Link to="/lien_he">Liên hệ</Link></li>
+              <li><Link to="/" onClick={closeMenu}>Trang chủ</Link></li>
+              <li><Link to="/my_pham" onClick={closeMenu}>Dược Mỹ Phẩm</Link></li>
+              <li><Link to="/trang_diem" onClick={closeMenu}>Trang điểm</Link></li>
+              <li><Link to="/cham_soc" onClick={closeMenu}>Chăm sóc</Link></li>
+              <li><Link to="/lam_dep" onClick={closeMenu}>Làm đẹp</Link></li>
+              <li><Link to="/gioi_thieu" onClick={closeMenu}>Giới thiệu</Link></li>
+              <li><Link to="/lien_he" onClick={closeMenu}>Liên hệ</Link></li>
             </ul>
           </nav>
         </div>
