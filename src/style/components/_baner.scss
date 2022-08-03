@@ -26,6 +26,9 @@
   &__body{
     padding-bottom: 50px;
     display:block;
+    @media (max-width:$mobile) {
+      padding-bottom: 20px;
+    }
     
   }
 
@@ -35,6 +38,9 @@
     line-height: 1.4;
     @media (max-width:$tablet) {
       font-size: 40px;
+    }
+    @media (max-width:$mobile) {
+      font-size:30px;
     }
   }
 

@@ -63,6 +63,11 @@
       right: 0;
       padding-right: 10px;
     }
+    @media (max-width:$mobile) {
+      width: 100%;
+      right: 0;
+      padding: 0 10px;
+    }
   }
 
   &__item{
@@ -87,6 +92,9 @@
   &__content{
     float: right;
     width: calc(100% - 60px);
+    @media (max-width:$mobile) {
+      padding-left: 10px;
+    }
   }
 
   &__right{
@@ -94,6 +102,11 @@
     @media (max-width:$tablet) {
       width: 50%;
       padding-left: 10px;
+    }
+    @media (max-width:$mobile) {
+      width: 100%;
+      right: 0;
+      padding: 0 10px;
     }
   }
 
@@ -110,5 +123,8 @@
   &__content2{
     float: left;
     width: calc(100% - 60px);
+    @media (max-width:$mobile) {
+      padding-left: 10px;
+    }
   }
 }
