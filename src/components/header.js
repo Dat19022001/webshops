@@ -94,8 +94,8 @@ export default function Header(){
                   <div className="header__close" onClick={closeMenu}><MdClose/></div>
                   <img src="../assets/images/header/store_1554367871_28.jpg"/>
                   <div className="header__menu-mobile">
-                    <Link to="/user/login"><p>Đăng Nhập</p></Link>
-                    <Link to="/user/register"><p>Đăng ký</p></Link>
+                    <Link to="/user/login" onClick={closeMenu}><p>Đăng Nhập</p></Link>
+                    <Link to="/user/register" onClick={closeMenu}><p>Đăng ký</p></Link>
                   </div>
                 </div>
               </li>
