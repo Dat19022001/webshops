@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import {Link} from "react-router-dom"
 
+
+  
+
 import ProductCard from "./productCard"
 
 export default function Product_List({data}){
@@ -13,6 +16,8 @@ export default function Product_List({data}){
     setProduct(item.product)
     setPath(item.path);
   }
+
+  
   return(
     <div className="hot">
       <div className="container">
@@ -20,13 +25,13 @@ export default function Product_List({data}){
       </div>
       <div className="hot__content">
           <ul className="hot__menu">
-            {data.map((item,index) =>(
-              <li key={index} className={`${index === selectOption ? 'active' : ''}`} onClick={() => handleSelected(item, index)}>
-                <div>
-                  <span>{item.Name}</span>
-                </div>
-              </li>
-            ))}
+              {data.map((item,index) =>(
+                <li key={index} className={`${index === selectOption ? 'active' : ''}`} onClick={() => handleSelected(item, index)}>
+                  <div>
+                    <span>{item.Name}</span>
+                  </div>
+                </li>
+              ))}
           </ul>
           <div className="hot__body">
             {product.map((item, index) =>(

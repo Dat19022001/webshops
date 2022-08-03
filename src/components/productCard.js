@@ -1,6 +1,6 @@
 import {RiShoppingBasketLine} from"react-icons/ri";
 import {FaExpandAlt} from"react-icons/fa";
-export default function productCard({data}){
+export default function ProductCard({data}){
   let {img,title,price} = data;
   return(
     <div className="card">

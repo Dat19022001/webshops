@@ -1,10 +1,25 @@
 import {Link} from 'react-router-dom';
 
 import {BsPencilSquare} from "react-icons/bs"
-
+import {AiOutlineMenu,AiOutlineSearch} from "react-icons/ai"
 import {FaLock} from "react-icons/fa"
+import {MdClose} from "react-icons/md"
 
-export default function header(){
+
+import {useState} from "react"
+
+export default function Header(){
+
+  const [open,setOpen] = useState(0);
+
+  const openMenu = ()=>{
+    setOpen(1);
+  }
+
+  const closeMenu = ()=>{
+    setOpen(0);
+  }
+  
   return(
       <div className="header">
         <div className="header__top">
@@ -24,6 +39,9 @@ export default function header(){
         <div className="header__sub">
           <div className="container">
             <div className="header__content">
+              <div className="header__mobile" onClick={openMenu}>
+                <AiOutlineMenu/>
+              </div>
               <div className="header__hotline col-lg-3">
                 <a href="#"><img src="../assets/images/header/mobile-phone.svg"/> 0869394765</a>
               </div>
@@ -57,11 +75,30 @@ export default function header(){
                 </ul>
               </div>
             </div>
+            <form className="header__tk">
+              <input type="search" placeholder="Tìm kiếm sản phẩm...."/>
+              <span>
+                <button>
+                  <AiOutlineSearch/>
+                </button>
+              </span> 
+            </form>
           </div>
         </div>
-        <nav className="header__menu">
-          <div className="container">
+        
+        <div className="container">
+          <nav className={`header__menu ${open == 0 ? '' : 'active'}`}>
             <ul>
+              <li className="header__logo-mobile">
+                <div className="header__sub-mobile">
+                  <div className="header__close" onClick={closeMenu}><MdClose/></div>
+                  <img src="../assets/images/header/store_1554367871_28.jpg"/>
+                  <div className="header__menu-mobile">
+                    <Link to="/user/login"><p>Đăng Nhập</p></Link>
+                    <Link to="/user/register"><p>Đăng ký</p></Link>
+                  </div>
+                </div>
+              </li>
               <li><Link to="/">Trang chủ</Link></li>
               <li><Link to="/my_pham">Dược Mỹ Phẩm</Link></li>
               <li><Link to="/trang_diem">Trang điểm</Link></li>
@@ -70,8 +107,8 @@ export default function header(){
               <li><Link to="/gioi_thieu">Giới thiệu</Link></li>
               <li><Link to="/lien_he">Liên hệ</Link></li>
             </ul>
-          </div>
-        </nav>
+          </nav>
+        </div>
         
         
       </div>

@@ -1,6 +1,6 @@
 import React from "react"
-import {Link} from "react-router-dom"
-export default function siderbar({data}){
+
+export default function Siderbar({data}){
   return(
     <div className="siderbar">
       <div className="siderbar__menu">

@@ -42,6 +42,11 @@
     @media (max-width:$mobile) {
       font-size:30px;
     }
+    @media (max-width:$miniMobile) {
+      font-size:20px;
+      margin-bottom:0;
+    }
+
   }
 
   &__subTitle{
@@ -51,6 +56,13 @@
     text-transform: uppercase;
     @media (max-width:$tablet) {
       font-size:12px;
+    }
+    @media (max-width:$mobile) {
+      font-size: 10px;
+    }
+    @media (max-width:$miniMobile) {
+      font-size:11px;
+      margin-bottom: 0;
     }
   }
 }
