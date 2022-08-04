@@ -198,6 +198,8 @@
       opacity: 0;
       transform:translateX(-100%);
       transition: all .4s ease-in-out;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
     
     ul{

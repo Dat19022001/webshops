@@ -7,6 +7,8 @@
   height:100%;
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: rgba(0,0,0,.85);
+  display:none;
 
   &__bg{
     position: relative;
@@ -123,4 +125,8 @@
       border-radius: 0.25rem;
     }
   }
+}
+
+.modal.active{
+  display:block !important;
 }
