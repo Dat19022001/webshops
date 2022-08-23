@@ -15,7 +15,7 @@ export default function Modal(){
     setNumber(number -1 )
   }
 
-  const {products,handleRemoveProduct} = useContext(modal)
+  const {products,handleRemoveProduct,addtoCart} = useContext(modal)
 
   const closeModal = () =>{
     handleRemoveProduct()
@@ -50,7 +50,7 @@ export default function Modal(){
                 <input type="button" value="+" className="modal__btn" onClick={()=>plus()}/>
               </div>
               <div className="modal__button">
-                <button type="submit">Thêm vào giỏ hàng</button>
+                <button type="submit" onClick={() => addtoCart(products.id,products.title,1,products.img,products.price)}>Thêm vào giỏ hàng</button>
               </div>
             </form>
           </div>

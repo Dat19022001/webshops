@@ -1,6 +1,11 @@
 import React from "react"
+import {useContext} from "react"
+
+import {filterProduct} from"../../src/constant/context"
 
 export default function Siderbar({data}){
+  const {changPrice} = useContext(filterProduct)
+
   return(
     <div className="siderbar">
       <div className="siderbar__menu">
@@ -15,7 +20,15 @@ export default function Siderbar({data}){
             <li>
               <span>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="radio" name="price" onChange={()=> changPrice(0)}/>
+                  Tất cả
+                </label>
+              </span>
+            </li>
+            <li>
+              <span>
+                <label>
+                  <input type="radio" name="price" onChange={()=> changPrice(100000)}/>
                   Dưới 100,000₫
                 </label>
               </span>
@@ -23,44 +36,44 @@ export default function Siderbar({data}){
             <li>
               <span>
                 <label>
-                  <input type="checkbox"/>
-                  Từ 100,000₫ - 200,000₫
+                  <input type="radio" name="price" onChange={()=> changPrice(200000)}/>
+                  Dưới 200,000₫
                 </label>
               </span>
             </li>
             <li>
               <span>
                 <label>
-                  <input type="checkbox"/>
-                  Từ 200,000₫ - 300,000₫
+                  <input type="radio" name="price"onChange={()=> changPrice(300000)}/>
+                  Dưới 300,000₫
                 </label>
               </span>
             </li>
             <li>
               <span>
                 <label>
-                  <input type="checkbox"/>
-                  Từ 300,000₫ - 500,000₫
+                  <input type="radio" name="price" onChange={()=> changPrice(500000)}/>
+                  Dưới 500,000₫
                 </label>
               </span>
             </li>
             <li>
               <span>
                 <label>
-                  <input type="checkbox"/>
-                  Từ 500,000₫ - 1,000,000₫
+                  <input type="radio" name="price"onChange={()=> changPrice(1000000)}/>
+                  Dưới 1000,000₫
                 </label>
               </span>
             </li>
             <li>
               <span>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="radio" name="price" onChange={()=> changPrice(2000000)}/>
                   Trên 1,000,000₫
                 </label>
               </span>
             </li>
-
+            
           </ul>
         </div>
 

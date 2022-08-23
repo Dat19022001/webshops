@@ -11,6 +11,7 @@ import LienHe from './lien_he';
 import Login from './login';
 import Register from './resgister';
 import NotFound from '../components/NotFound';
+import Cart from '../components/cart';
 
 
 export default function IndexPage(){
@@ -26,6 +27,7 @@ export default function IndexPage(){
           <Route path="/lam_dep" element={<LamDep/>}/>
           <Route path="/gioi_thieu" element={<GioiThieu/>}/>
           <Route path="/lien_he" element={<LienHe/>}/>
+          <Route path="/cart" element={<Cart/>}/>
           <Route path="user">
             <Route index={true} element={<NotFound/>}/>
             <Route path="login" element={<Login/>}/>

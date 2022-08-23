@@ -6,11 +6,16 @@ import {FaLock} from "react-icons/fa"
 import {MdClose} from "react-icons/md"
 
 
-import {useState} from "react"
+import {useState,useContext} from "react"
+
+
+import { modal } from '../constant/context';
+
 
 export default function Header(){
 
   const [open,setOpen] = useState(0);
+  const {sl} = useContext(modal)
 
   const openMenu = ()=>{
     setOpen(1);
@@ -51,8 +56,8 @@ export default function Header(){
               <div className="header__help col-lg-3">
                 <ul>
                   <li className="header__cart">
-                    <a><img src="../assets/images/header/shopping-cart.svg"/></a>
-                    <span className="header__quantity">0</span>
+                    <Link to="/cart"><img src="../assets/images/header/shopping-cart.svg"/></Link>
+                    <span className="header__quantity">{sl}</span>
                   </li>
                   <li className="header__search"><a><img src="../assets/images/header/search.svg"/></a></li>
                   <li className="header__account">
