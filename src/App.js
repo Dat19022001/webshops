@@ -12,9 +12,12 @@ import Page  from './pages/index'
 
 
 function App() {
+
+  
   
   const [cart,setCart] = useState([])
   const [products,setProduct] = useState(' ')
+  
 
   const handleSetProduct = (product) =>{
     setProduct(product)

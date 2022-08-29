@@ -1,14 +1,12 @@
 import {MdClose} from "react-icons/md"
 
-import { useState,useContext} from "react"
+import { useState,useContext,useEffect} from "react"
 
 import {modal} from '../constant/context'
 
 import {chuyenVND} from '../constant/validate'
 
 export default function Modal(){
-
-  
   const [number,setNumber] = useState(1);
 
   const plus = () =>{
@@ -18,10 +16,13 @@ export default function Modal(){
   const minus = () =>{
     setNumber(number -1 )
   }
+ 
 
   var {products,handleRemoveProduct,addtoCart} = useContext(modal)
 
-
+  useEffect(() =>{
+    setNumber(1)
+  },[products])
 
   const closeModal = () =>{
     handleRemoveProduct()
