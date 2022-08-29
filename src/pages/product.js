@@ -1,7 +1,11 @@
 import { useState,useEffect} from "react";
-import ReactPaginate from "react-paginate";
+
+
+import {Pagination} from 'antd'
 
 import {filterProduct} from '../../src/constant/context'
+
+import 'antd/dist/antd.css';
 
 
 import Helmet from "../components/helmet";
@@ -14,7 +18,7 @@ export default function Product({path,listproduct,brumb}){
 
   useEffect(()=>{
     setProduct(listproduct);
-    setPageNumber(0)
+    setPageNumber(1)
   },[listproduct]);
 
   const [valuePrice,setValuePrice] = useState(0);
@@ -26,9 +30,9 @@ export default function Product({path,listproduct,brumb}){
  
   
   const [products, setProduct] = useState(listproduct)
-  const [pageNumber,setPageNumber] = useState(0);
+  const [pageNumber,setPageNumber] = useState(1);
   const productPage = 6
-  const pageVisit = pageNumber * productPage
+  const pageVisit = (pageNumber-1) * productPage
 
   var productss=[];
   if(valuePrice === 2000000){
@@ -47,10 +51,10 @@ export default function Product({path,listproduct,brumb}){
     return<ProductCard key={index} data={product}/>
   })
 
-  const pageCount = Math.ceil(productss.length/productPage)
 
-  const changePage = ({selected}) =>{
-    setPageNumber(selected)
+  const changePage = (title) =>{
+    setPageNumber(title)
+    
   }
 
   const crumbs = [
@@ -75,17 +79,15 @@ export default function Product({path,listproduct,brumb}){
             </div>
             {productss.length !==0 
               ?
-            <ReactPaginate
-                previousLabel = {"PREVIOUS"}
-                nextLabel = {"NEXT"}
-                pageCount = {pageCount}
-                onPageChange={changePage}
-                containerClassName = {"content__btn"}
-                previousClassName = {"content__pre"}
-                nextClassName = {"content__next"}
-                disabledClassName = {"content__disabled"}
-                activeClassName ={"content__active"}
-              /> 
+              <div className="content__pagination">
+                <Pagination
+                current={pageNumber}
+                defaultCurrent={1}
+                pageSize={productPage}
+                total={productss.length}
+                onChange={(title) => changePage(title)}
+                /> 
+              </div>
               :<span className="content__error"> KHÔNG CÓ SẢN PHẨM </span>
             }
           </div>

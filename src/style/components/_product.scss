@@ -6,6 +6,8 @@
   
   &__list{
     width: 75%;
+    position: relative;
+    margin-bottom: 40px;
     @media (max-width:$tablet) {
       width: 100%;
     }
@@ -59,4 +61,9 @@
     line-height: 55px;
   }
 
+  &__pagination{
+    position: absolute;
+    bottom: -20px;
+    left: 40%;
+  }
 }
