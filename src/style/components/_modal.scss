@@ -126,7 +126,7 @@
     cursor: pointer;
     border: none;
   }
-  &__button {
+  &__button{
     button{
       background: #de101d;
       border: 1px solid #de101d;
@@ -138,6 +138,17 @@
       line-height: 1.5;
       border-radius: 0.25rem;
     }
+  }
+  &__button1 {
+      background: #de101d;
+      border: 1px solid #de101d;
+      color: #fff;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 10px 20px;
+      line-height: 1.5;
+      border-radius: 0.25rem;
   }
 }
 

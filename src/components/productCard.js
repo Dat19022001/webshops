@@ -3,6 +3,8 @@ import {FaExpandAlt} from"react-icons/fa";
 
 import { useContext} from 'react';
 
+import {chuyenVND} from '../constant/validate'
+
 import {modal} from '../constant/context'
 export default function ProductCard({data}){
   let {img,title,price} = data;
@@ -10,6 +12,7 @@ export default function ProductCard({data}){
   const {handleSetProduct,addtoCart} = useContext(modal)
 
   const product = {
+    id: data.id,
     imgs: img,
     title: title,
     price: price,
@@ -30,7 +33,7 @@ export default function ProductCard({data}){
             <h3 className="card__title">
               <a href="#"><span>{title}</span></a>
             </h3>
-            <div className="card__price"><span>{price} ₫</span></div>
+            <div className="card__price"><span>{chuyenVND(price)} </span></div>
             <div className="card__icon">
               <a className="card__cart" onClick={() => addtoCart(data.id,title,1,img,price)}><RiShoppingBasketLine/></a>
               <a className="card__expand"><FaExpandAlt/></a>

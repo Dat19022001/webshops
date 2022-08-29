@@ -41,13 +41,38 @@ function App() {
     }else{
       cart.forEach((item)=>{
         if(item.id === id){
-          item.quantity +=1;
+          if(quantity!==1){
+            item.quantity +=quantity;
+          }
+          else{
+            item.quantity +=1;
+          }
         }
       })
     }
     alert("Thêm vào giỏ hàng thành công");
   }
   let sl = cart.length;
+
+  const plusProduct = (id)=>{
+    const indexCart = cart.findIndex(item=>item.id === id);
+    
+    const newCart =[...cart];
+    newCart[indexCart].quantity++;
+
+    setCart(newCart);
+
+  }
+  const minusProduct = (id)=>{
+    const indexCart = cart.findIndex(item=>item.id === id);
+    
+    const newCart =[...cart];
+    if(newCart[indexCart].quantity > 1){
+      newCart[indexCart].quantity--;
+    }
+    setCart(newCart);
+
+  }
 
   const deleteCart = (id) =>{
     const carts = cart.filter((item)=>  item.id !== id)
@@ -56,7 +81,7 @@ function App() {
   
   return (
     <div className="main">
-      <modal.Provider value = {{products,handleSetProduct,handleRemoveProduct,cart,addtoCart,sl,deleteCart}}>
+      <modal.Provider value = {{products,handleSetProduct,handleRemoveProduct,cart,addtoCart,sl,deleteCart,plusProduct,minusProduct}}>
         <Header/>
         <Page/>
         <Modal/>

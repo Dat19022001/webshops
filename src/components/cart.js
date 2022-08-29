@@ -1,4 +1,6 @@
 import {AiOutlineClose} from "react-icons/ai"
+import { Link } from "react-router-dom"
+import {chuyenVND} from "../constant/validate"
 
 import Helmet from "./helmet"
 import Paths from "./path"
@@ -9,7 +11,8 @@ import React from "react"
 
 import {modal} from '../constant/context'
 export default function Cart(){
-  const{cart,deleteCart} = useContext(modal)
+  const{cart,deleteCart,plusProduct,minusProduct} = useContext(modal)
+  
   let total = 0
   const crumbs = [
     {
@@ -55,17 +58,17 @@ export default function Cart(){
                     <strong>{item.title}</strong>
                   </div>
                   <div className="cart__price cart__item2">
-                    <strong>{item.price}</strong>
+                    <strong>{chuyenVND(item.price)}</strong>
                   </div>
                   <div className="cart__quantity cart__item2">
                     <strong>
-                        <input type="button" value="-" className="modal__btn" />
+                        <input type="button" value="-" className="modal__btn" onClick={() => minusProduct(item.id)} />
                         <input type="text" name="quantity" value={item.quantity} min="1" max="100" className="modal__sl"/>
-                        <input type="button" value="+" className="modal__btn" />
+                        <input type="button" value="+" className="modal__btn"  onClick={()=> plusProduct(item.id)} />
                     </strong>
                   </div>
                   <div className="cart__total cart__item2">
-                    <strong>{item.price*item.quantity}</strong>
+                    <strong>{chuyenVND(item.price*item.quantity)}</strong>
                   </div>
                   <div className="cart__delete cart__item2">
                     <strong onClick={() => deleteCart(item.id)}><AiOutlineClose/></strong>
@@ -77,13 +80,13 @@ export default function Cart(){
         </div>
         <div className="cart__sum">
           <span>Tổng tiền:</span>
-          <strong>{total}₫</strong>
+          <strong>{chuyenVND(total)}</strong>
           <div className="cart__btn">
             <div className="modal__button cart__button">
-              <button type="submit">Tiếp tục mua hàng</button>
+              <button type="text"><Link to="/">Tiếp tục mua hàng</Link></button>
             </div>
             <div className="modal__button">
-              <button type="submit">Thanh Toán</button>
+              <button type="text">Thanh Toán</button>
             </div>
           </div>
         </div>

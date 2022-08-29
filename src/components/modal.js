@@ -1,10 +1,14 @@
 import {MdClose} from "react-icons/md"
 
-import { useState,useContext } from "react"
+import { useState,useContext} from "react"
 
 import {modal} from '../constant/context'
 
+import {chuyenVND} from '../constant/validate'
+
 export default function Modal(){
+
+  
   const [number,setNumber] = useState(1);
 
   const plus = () =>{
@@ -15,7 +19,9 @@ export default function Modal(){
     setNumber(number -1 )
   }
 
-  const {products,handleRemoveProduct,addtoCart} = useContext(modal)
+  var {products,handleRemoveProduct,addtoCart} = useContext(modal)
+
+
 
   const closeModal = () =>{
     handleRemoveProduct()
@@ -42,7 +48,7 @@ export default function Modal(){
               <p>- Hàng hoá chất lượng cao.</p>
               <p>- Chiết khấu 100% từ các sản phẩm tự nhiên</p>
             </div>
-            <div className="modal__price">{products.price}₫</div>
+            <div className="modal__price">{chuyenVND(products.price)}</div>
             <form className="modal__form">
               <div className="modal__quantity">
                 <input type="button" value="-" className="modal__btn" onClick={()=>minus()}/>
@@ -50,7 +56,12 @@ export default function Modal(){
                 <input type="button" value="+" className="modal__btn" onClick={()=>plus()}/>
               </div>
               <div className="modal__button">
-                <button type="submit" onClick={() => addtoCart(products.id,products.title,1,products.img,products.price)}>Thêm vào giỏ hàng</button>
+                <div className="modal__button1" 
+                onClick={() => {
+                  addtoCart(products.id,products.title,number,products.imgs,products.price)
+                  closeModal()
+                  }} >
+                  Thêm vào giỏ hàng</div>
               </div>
             </form>
           </div>

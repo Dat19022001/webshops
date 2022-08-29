@@ -14,3 +14,6 @@ export const isValidLength = (value,length) =>{
   }
   return false;
 }
+
+export const chuyenVND = (num) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(num)
+

@@ -168,6 +168,48 @@ export const data_Product = [
         img:"https://img.cdn.vncdn.io/nvn/ncdn/store1/45233/ps/20190402/d2_183x274.jpg",
         title:"Serum dưỡng da chống lão hóa",
         price:870000,
+      },
+      {
+        id:234,
+        img:"https://img.cdn.vncdn.io/nvn/ncdn/store1/45233/ps/20190402/d2_183x274.jpg",
+        title:"Serum dưỡng da chống lão hóa",
+        price:100000,
+      },
+      {
+        id:235,
+        img:"https://img.cdn.vncdn.io/nvn/ncdn/store1/45233/ps/20190402/d2_183x274.jpg",
+        title:"Serum dưỡng da chống lão hóa",
+        price:200000,
+      },
+      {
+        id:236,
+        img:"https://img.cdn.vncdn.io/nvn/ncdn/store1/45233/ps/20190402/d2_183x274.jpg",
+        title:"Serum dưỡng da chống lão hóa",
+        price:470000,
+      },
+      {
+        id:237,
+        img:"https://img.cdn.vncdn.io/nvn/ncdn/store1/45233/ps/20190402/d2_183x274.jpg",
+        title:"Serum dưỡng da chống lão hóa",
+        price:570000,
+      },
+      {
+        id:238,
+        img:"https://img.cdn.vncdn.io/nvn/ncdn/store1/45233/ps/20190402/d2_183x274.jpg",
+        title:"Serum dưỡng da chống lão hóa",
+        price:670000,
+      },
+      {
+        id:239,
+        img:"https://img.cdn.vncdn.io/nvn/ncdn/store1/45233/ps/20190402/d2_183x274.jpg",
+        title:"Serum dưỡng da chống lão hóa",
+        price:120000,
+      },
+      {
+        id:240,
+        img:"https://img.cdn.vncdn.io/nvn/ncdn/store1/45233/ps/20190402/d2_183x274.jpg",
+        title:"Serum dưỡng da chống lão hóa",
+        price:140000,
       }
     ]
   },
