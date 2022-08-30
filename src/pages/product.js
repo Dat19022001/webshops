@@ -45,6 +45,7 @@ export default function Product({path,listproduct,brumb}){
     productss = products.filter(product => product.price < valuePrice)
   }
 
+  
 
   const displayProduct = productss.slice(pageVisit,pageVisit+productPage).map((product,index)=>{
 

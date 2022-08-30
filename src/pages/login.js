@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 
 import { useState} from 'react';
 
-import { isValidEmail, isValidPassword} from '../constant/validate'
+import { isValidPassword} from '../constant/validate'
 
 import Helmet from "../components/helmet";
 
 export default function Login(){
 
-  const initialValues = {email: '',password: ''};
+  const initialValues = {userName: '',password: ''};
   const [formValues,setFormValues] = useState(initialValues);
-  const [formError,setFormError] = useState({email:'',password:''});
+  const [formError,setFormError] = useState({userName:'',password:''});
 
   const handleChange = ({currentTarget: input}) => {
     setFormValues({...formValues,[input.name]: input.value})
@@ -22,20 +22,17 @@ export default function Login(){
   const handleBlur = (e) => {
     const name = e.target.name;
     const error = validate(formValues);
-    if (name === 'email'){
-      setFormError({...formError, [name] : error.email});
+    if (name === 'userName'){
+      setFormError({...formError, [name] : error.userName});
     }
     if (name === 'password'){
       setFormError({...formError, [name] : error.password});
     }
   }
   const validate = (values) => {
-    const errors = { email: "", password: ""}
-    if(!values.email){
-        errors.email = "Vui lòng nhập email!"
-    }
-    else if(!isValidEmail(values.email)){
-        errors.email = "Vui lòng nhập đúng email!"
+    const errors = { userName: "", password: ""}
+    if(!values.userName){
+        errors.userName = "Vui lòng nhập UserName!"
     }
     if(!values.password){
         errors.password = "Vui lòng nhập mật khẩu!"
@@ -48,6 +45,8 @@ export default function Login(){
     return errors
   }
 
+  
+
   return(
     <Helmet title="Đăng nhập">
       <div className="container">
@@ -55,11 +54,11 @@ export default function Login(){
           <form>
             <ul>
               <li>
-                <input type="text" className="login__email" placeholder="Email" 
-                  name="email" onBlur={(e) => handleBlur(e)}
-                  value={formValues.email} onChange={handleChange}
+                <input type="text" className="login__email" placeholder="UserName" 
+                  name="userName" onBlur={(e) => handleBlur(e)}
+                  value={formValues.userName} onChange={handleChange}
                 />
-                {formError.email && <p>{formError.email}</p>}
+                {formError.userName && <p>{formError.userName}</p>}
               </li>
               <li>
                 <input type="password" className="login__password" placeholder="Mật Khẩu"
