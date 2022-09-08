@@ -1,8 +1,14 @@
 import Helmet from "../components/helmet";
 
+import { unwrapResult } from "@reduxjs/toolkit";
+import {useNavigate} from 'react-router-dom'
 import {useState} from 'react';
+import { useDispatch } from "react-redux";
 
-import { isValidEmail, isValidPassword} from '../constant/validate'
+import { isValidEmail} from '../constant/validate'
+import {register} from '../user/userSlide'
+
+
 
 
 
@@ -10,11 +16,43 @@ export default function Register(){
   const initialValues = {userName:'', email: '',password: '',lastName:'',firstName:''};
   const [formValues,setFormValues] = useState(initialValues);
   const [formError,setFormError] = useState({userName:'', email: '',password: '',lastName:'',firstName:''});
+  const [registerError,setRegisterError] = useState('')
 
   const handleChange = ({currentTarget: input}) => {
     setFormValues({...formValues,[input.name]: input.value})
   }
 
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch();
+
+  const resgister = () => {
+    const params = { 
+      email: formValues.email,
+      firstName: formValues.firstName,
+      lastName:formValues.lastName,
+      password:formValues.password,
+      username:formValues.userName,
+    }
+
+    
+    const handleSubmit = async(value)=>{
+      
+      try{
+        const action = register(value);
+        const resultAction = await dispatch(action);
+        const user = unwrapResult(resultAction);
+        alert(user.message)
+        setRegisterError("")
+        navigate('/user/login',{replace : true})
+      }
+      catch(err){
+        setRegisterError("Username is already taken")
+      }
+
+    }
+    handleSubmit(params);
+  }
 
   const handleBlur = (e) => {
     const name = e.target.name;
@@ -46,10 +84,6 @@ export default function Register(){
     if(!values.password){
         errors.password = "Vui lòng nhập mật khẩu!"
     }
-    else if(!isValidPassword(values.password)){
-        errors.password = "Mật khẩu ít nhất 6 ký tự!"
-
-    }
     if(!values.lastName){
       errors.lastName = "Vui lòng nhập LastName ";
     }
@@ -68,6 +102,7 @@ export default function Register(){
           <form>
             <ul>
               <li>
+              {registerError && <p>{registerError}</p> }
                 <input type="text" className="register__sdt" placeholder="FirstName"
                    name="firstName" onBlur={(e) => handleBlur(e)}
                    value={formValues.firstName} onChange={handleChange}
@@ -103,11 +138,14 @@ export default function Register(){
                 {formError.password && <p>{formError.password}</p>}
               </li>
               
-              <li className="login__submit">
-                <input type="submit" className="login__submit1" value="Đăng Ký"/>
-              </li>
+              
             </ul>
           </form>
+          <div className="login__submit">
+            <button 
+              disabled = {formValues.userName==='' || formValues.password==='' || formValues.firstName==='' || formValues.lastName==='' || formValues.email===''} 
+              className="login__submit1" onClick={()=> resgister()} >Đăng Ký</button>
+          </div>
         </div>
       </div>
     </Helmet>

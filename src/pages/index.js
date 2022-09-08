@@ -2,7 +2,6 @@ import {Routes,Route} from 'react-router-dom'
 
 import { data_Product } from '../data/Home';
 
-
 import Home from "./home";
 import Product from "./product";
 import LamDep from './lam_dep';
@@ -13,8 +12,10 @@ import Register from './resgister';
 import NotFound from '../components/NotFound';
 import Cart from '../components/cart';
 
-
 export default function IndexPage(){
+
+  
+
   return (
     <Routes>
           <Route path="/" element={<Home/>}/>

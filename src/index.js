@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter} from 'react-router-dom';
 
+import {Provider} from 'react-redux'
+
 import App from './App';
+import store from './app/store'
 
 import Footer from "./components/footer";
 
@@ -14,11 +17,12 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      
-       <App />
-      <Footer/>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>    
+        <App />
+        <Footer/>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

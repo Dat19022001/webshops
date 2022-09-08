@@ -300,6 +300,9 @@
     padding:12px 25px;
     position: relative;
   }
+  &__logout:hover{
+    color: #61c472;
+  }
 }
 
 .header__menu.active{
