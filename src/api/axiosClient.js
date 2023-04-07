@@ -1,9 +1,12 @@
 import axios from 'axios'
 
 const axiosClient = axios.create({
-  baseURL:'https://english-backend-v2.herokuapp.com/',
+  baseURL:'https://dog.ceo/api/breeds/image/',
   header:{
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+    "Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept"
   },
 });
 

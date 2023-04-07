@@ -8,7 +8,7 @@ const authenticateApi = {
   },
 
   resgister(params) {
-    const url="users/register"
+    const url="random/"
     return axiosClient.post(url, params)
   }
 }

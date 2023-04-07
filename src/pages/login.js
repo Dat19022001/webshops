@@ -1,22 +1,14 @@
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { AiFillQuestionCircle } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-
 import { useState } from "react";
-
-import {useDispatch} from "react-redux"
-import { unwrapResult } from "@reduxjs/toolkit";
-
-import {login} from '../user/userSlide'
-
 import Helmet from "../components/helmet";
-
+import { loginRequest } from "../services/authService";
+import { useDispatch } from "react-redux";
+import { insertUser } from "../user/userSlide";
 
 export default function Login() {
   const dispatch = useDispatch();
-
- 
-
   const initialValues = { userName: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formError, setFormError] = useState({ userName: "", password: "" });
@@ -50,67 +42,32 @@ export default function Login() {
   };
 
   const navigate = useNavigate();
- 
-  //   const params = {
-  //     username: formValues.userName,
-  //     password: formValues.password,
-  //   };
-
-  //   const fetchLogin = async () => {
-  //     try {
-  //       const res = await authenticateApi.login(params);
-
-      
-  //       if (res.data) {
-  //         const user = JSON.stringify(res.data);
-
-  //         localStorage.setItem("user", user);
-  //         // navigate("/", { replace: true });
-
-  //         alert("Đăng nhập thành công");
-  
-  //         setLoginError("");
-  //       }
-  //     } catch (err) {
-  //       setLoginError(err.response.data);
-  //     }
-  //   };
-
-  //   fetchLogin();
-
-  //   console.log(loginError);
-  // };
- 
 
   const login1 = () => {
-    const params = { 
-      email: formValues.email,
-      firstName: formValues.firstName,
-      lastName:formValues.lastName,
-      password:formValues.password,
-      username:formValues.userName,
-    }
-
-    
-    const handleSubmit = async(value)=>{
-      
-      try{
-        const action = login(value);
-        const resultAction = await dispatch(action);
-        unwrapResult(resultAction);
-
-        alert('Dang nhap thanh cong');
-        navigate('/',{ replace : true})
-        setLoginError('')
+    const params = {
+      UserName: formValues.userName,
+      Password: formValues.password,
+    };
+    loginRequest(
+      params,
+      (res) => {
+        if (res.data.status === "Failed") {
+          setLoginError(res.data.message);
+        }
+        if (res.data.status === "Success") {
+          setLoginError("");
+          const user = JSON.stringify(res.data.UserName);
+          localStorage.setItem("user", user);
+          dispatch(insertUser(user))
+          alert("Dang nhap thanh cong");
+          navigate("/", { replace: true });
+        }
+      },
+      (err) => {
+        console.log(err);
       }
-      catch(err){
-        setLoginError('Username or password is incorrect')
-      }
-
-    }
-    handleSubmit(params);
-  }
-
+    );
+  };
   return (
     <Helmet title="Đăng nhập">
       <div className="container">
