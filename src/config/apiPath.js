@@ -3,5 +3,7 @@ export const BASE_URL = "http://26.31.84.75:8000";
 
 export const apiPath = {
   register: BASE_URL + "/userregistration/",
-  login: BASE_URL + "/userlogin/"
+  login: BASE_URL + "/userlogin/",
+  getProduct : BASE_URL + "/getproduct/",
+  getProductDetail: BASE_URL + "/getProductDetail/"
 }

@@ -1,45 +1,51 @@
-import {RiShoppingBasketLine} from"react-icons/ri";
-import {FaExpandAlt} from"react-icons/fa";
+import { RiShoppingBasketLine } from "react-icons/ri";
+import { FaExpandAlt } from "react-icons/fa";
+import { useContext } from "react";
+import { chuyenVND } from "../constant/validate";
+import { modal } from "../constant/context";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import { useContext} from 'react';
+import { setProductId, setCheck } from "../product/productDetail";
+export default function ProductCard({ data }) {
+  let { img, title, price } = data;
+  const dispatch = useDispatch();
+  const { addtoCart } = useContext(modal);
+  const openModal = () => {
+    dispatch(setProductId(data.id));
+    dispatch(setCheck(true));
+  };
 
-import {chuyenVND} from '../constant/validate'
-
-import {modal} from '../constant/context'
-export default function ProductCard({data}){
-  let {img,title,price} = data;
-
-  const {handleSetProduct,addtoCart} = useContext(modal)
-
-  const product = {
-    id: data.id,
-    imgs: img,
-    title: title,
-    price: price,
-  }
-
-  const openModal = (product) =>{
-    handleSetProduct(product)
-  }
-
-
-    return(
-      <div className="card">
-        <div className="card__body">
-          <div className="card__img">
-            <div onClick={() =>openModal(product)} ><img src={img} alt=""/></div>
+  return (
+    <div className="card">
+      <div className="card__body">
+        <div className="card__img">
+          <div onClick={() => openModal()}>
+            <img src={img} alt="" />
           </div>
-          <div className="card__text">
-            <h3 className="card__title">
-              <a href="#"><span>{title}</span></a>
-            </h3>
-            <div className="card__price"><span>{chuyenVND(price)} </span></div>
-            <div className="card__icon">
-              <a className="card__cart" onClick={() => addtoCart(data.id,title,1,img,price)}><RiShoppingBasketLine/></a>
-              <a className="card__expand"><FaExpandAlt/></a>
+        </div>
+        <div className="card__text">
+          <h3 className="card__title">
+            <Link to="">
+              <span>{title}</span>
+            </Link>
+          </h3>
+          <div className="card__price">
+            <span>{chuyenVND(price)} </span>
+          </div>
+          <div className="card__icon">
+            <div 
+              className="card__cart card__a"
+              onClick={() => addtoCart(data.id, title, 1, img, price)}
+            >
+              <RiShoppingBasketLine />
+            </div>
+            <div className="card__expand card__a">
+              <FaExpandAlt />
             </div>
           </div>
         </div>
       </div>
-    )
+    </div>
+  );
 }

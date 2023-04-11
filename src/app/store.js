@@ -1,12 +1,14 @@
 import userReduce from "../user/userSlide"
 import productSlide from "../product/productSlide"
+import productDetail from "../product/productDetail"
 
 const {configureStore} = require('@reduxjs/toolkit')
 
 
 const rootUser = {
   user: userReduce,
-  product: productSlide
+  product: productSlide,
+  detail: productDetail,
 }
 
 const store = configureStore({

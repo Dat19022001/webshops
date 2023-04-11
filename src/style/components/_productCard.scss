@@ -89,7 +89,20 @@
     opacity: 0;
     padding: 10px 0;
 
-    a{
+    // a{
+    //   background-color: $bg-header;
+    //   color: $white;
+    //   width: 40px;
+    //   height: 40px;
+    //   border-radius: 50%;
+    //   display: inline-flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   svg{
+    //     font-size:20px;
+    //   }
+    }
+    &__a{
       background-color: $bg-header;
       color: $white;
       width: 40px;
@@ -102,8 +115,6 @@
         font-size:20px;
       }
     }
-
-  }
 
   &__cart{
     margin-right: 4px;

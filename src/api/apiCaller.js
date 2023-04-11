@@ -25,3 +25,30 @@ export const postRequest = async (
         }
     });
 };
+
+export const getRequest = async (
+  url = "",
+  params,
+  successCallback,
+  errorCallback,
+) => {
+  return await axios
+  .get(url, params)
+  .then((response) => {
+    if (successCallback) {
+      try {
+        successCallback(response);
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+  })
+  .catch((error) => {
+    if (errorCallback)
+      try {
+        errorCallback(error);
+      } finally {
+        console.log(error);
+      }
+  });
+};

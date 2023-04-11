@@ -1,55 +1,71 @@
 import {MdClose} from "react-icons/md"
-
 import { useState,useContext,useEffect} from "react"
-
 import {modal} from '../constant/context'
-
 import {chuyenVND} from '../constant/validate'
+import { getProductDetail } from "../services/product";
+import { useDispatch, useSelector } from "react-redux";
+import { setCheck } from "../product/productDetail";
+
 
 export default function Modal(){
   const [number,setNumber] = useState(1);
-
+  const dispatch = useDispatch();
+  const productId = useSelector((state) => state.detail.productId.payload)
+  const check = useSelector((state) => state.detail.check.payload);
   const plus = () =>{
     setNumber(number + 1);
   }
-
   const minus = () =>{
     setNumber(number -1 )
   }
  
+  var {addtoCart} = useContext(modal)
 
-  var {products,handleRemoveProduct,addtoCart} = useContext(modal)
+  const [item,setItem] = useState({}) 
 
   useEffect(() =>{
     setNumber(1)
-  },[products])
-
+    const detail = () =>{
+      const params = {
+        id:productId,
+      }
+      getProductDetail(
+        params,
+        (res) =>{
+          setItem(res.data.data[0])
+        },
+        (err)=>{
+          console.log(err)
+        }
+      )
+    }
+    detail()
+  },[productId])
   const closeModal = () =>{
-    handleRemoveProduct()
+    dispatch(setCheck(false))
   }
   return(
-    <div className={`modal ${products === ' ' ? ' ' : 'active'}`}>
+    <div className={`modal ${check === true ? 'active' : ''}`}>
       <div className="modal__bg">
         <div className="modal__cart">
           <div className="modal__exit" onClick={() =>closeModal()}>
             <MdClose/>
           </div>
           <div className="modal__img">
-            <img src={products.imgs} alt="nước hoa"/>
+            <img src={item.img} alt="nước hoa"/>
           </div>
           <div className="modal__text">
             <div className="modal__title">
-              <h1>{products.title}</h1>
-              <span>Tình trạng:
-                <strong>Còn hàng</strong>
+              <h1>{item.title}</h1>
+              <span>Category:
+                <strong>{item.category}</strong>
               </span>
             </div>
             <div className="modal__des">
               <span>Đánh giá sản phẩm:</span>
-              <p>- Hàng hoá chất lượng cao.</p>
-              <p>- Chiết khấu 100% từ các sản phẩm tự nhiên</p>
+              <p>- {item.des}</p>
             </div>
-            <div className="modal__price">{chuyenVND(products.price)}</div>
+            <div className="modal__price">{chuyenVND(item.price)}</div>
             <form className="modal__form">
               <div className="modal__quantity">
                 <input type="button" value="-" className="modal__btn" onClick={()=>minus()}/>
@@ -59,7 +75,7 @@ export default function Modal(){
               <div className="modal__button">
                 <div className="modal__button1" 
                 onClick={() => {
-                  addtoCart(products.id,products.title,number,products.imgs,products.price)
+                  addtoCart(item.id,item.title,number,item.img,item.price)
                   closeModal()
                   }} >
                   Thêm vào giỏ hàng</div>
